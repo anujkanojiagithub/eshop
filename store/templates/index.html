@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load cart_filters %}
+{% csrf_token %}
+<div class="container-fluid mt-1">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="ist-group">
+                {% for cat in categories %}
+                <a href="/store?category={{cat.id}}" class="list-group-item list-group-item-action">{{cat.name}}</a>
+                
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+
+                    <div class="card"  style="width: 18rem;">
+                        <img src="{{ product.image.url }}"  class="card-img-top img-thumbnail img-fuild" alt=>
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p class="card-text">{{product.description|short_desc}}</p>    
+                        </div>
+                        <div class="card-footer ">
+                            <div class="row" id ="button_{{product.id}}">
+                                {% if  product.id|isInCart:request  %}
+                                <div class="col-md-3"><button type="button" data-id ="{{product.id}}" class="btn btn-secondary decreaseValue">-</button></div>
+                                <div class="col-md-6 text-center">
+                                    {{ product.id | isInCart:request }} in cart
+                                    
+                                </div>
+                                <div class="col-md-3"><button type="button" data-id ="{{product.id}}" class="btn btn-secondary increaseValue">+</button></div>
+                                {% else %}
+                                    <a href=""  data-id="{{product.id}}" class="btn btn-primary addToCart btn-block">Add To Card</a>
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        {% endfor %}
+    </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
