@@ -7,12 +7,17 @@ from django.views import View
 
 class Login(View):
     def get(self,request):
-        return render(request,'login.html')
+        check = request.session.get('customer')
+        if check:
+            return redirect('index')
+        else:
+            return render(request,'login.html')
 
     def passMatching(self,obj,password):
         return check_password(password,obj.password)
 
     def post(self,request):
+        
         email = request.POST.get('email')
         password = request.POST.get('password')
         if  not Customer.objects.filter(email=email).exists():

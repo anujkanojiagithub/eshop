@@ -1,5 +1,5 @@
 from django.urls import path
-from .view import home,login,signup,misc
+from .view import home,login,signup,misc,cart,address
 
 
 urlpatterns = [
@@ -9,4 +9,6 @@ urlpatterns = [
     path('additem',misc.AddCart.as_view(),name ='addcart'),
     path('changeQuatity',misc.changeQuatity.as_view(),name ='changeQuatity'),
     path('logout',login.logout,name ='logout'),
+    path('cart',cart.Cart.as_view(),name ='cart'),
+    path('address',address.Cart.as_view(),name ='address'),
 ]

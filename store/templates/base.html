@@ -27,6 +27,9 @@
           </ul>
 
           <ul class="navbar-nav my-2 my-lg-0">
+            <li class="nav-item bg-light">
+              <a class="nav-link" href="{% url 'cart' %}">Cart <span class="sr-only">(current)</span></a>
+            </li>
             {% if not request.session.customer.id %}
             <li class="nav-item bg-light">
               <a class="nav-link" href="{% url 'login' %}">Login <span class="sr-only">(current)</span></a>
@@ -52,6 +55,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
 <script src="{% static 'jquery/main.js' %}"></script>
+<script src="{% static 'jquery/address.js' %}"></script>
+<script src="{% static 'jquery/cart.js' %}"></script>
 
 </body>
 </html>

@@ -11,4 +11,7 @@ class Customer(models.Model):
     @staticmethod
     def getCustomerByEmail(email):
         return Customer.objects.get(email=email)
+    @staticmethod
+    def getCustomerById(id):
+        return Customer.objects.get(id=int(id))
 
