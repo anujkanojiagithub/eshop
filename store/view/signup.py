@@ -6,7 +6,7 @@ from django.views import View
 # Create your views here.
 
 
-
+# learn about django form and try to do it using that
 
 class Signup(View):
     def get(self,request):
