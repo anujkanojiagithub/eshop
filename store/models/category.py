@@ -7,4 +7,5 @@ class Category(models.Model):
 
     @staticmethod
     def getAllCategory():
+        # no need to this function your are just increasing a function call.
         return Category.objects.all()
