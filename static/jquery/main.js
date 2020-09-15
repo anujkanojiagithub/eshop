@@ -1,4 +1,4 @@
-
+// rename jquery.js to jquery.min.js
 
 
 $(document).ready(function () {
@@ -6,11 +6,11 @@ $(document).ready(function () {
 
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-    $('body').on('click', 'a.addToCart', function (e) {
+    $('body').on('click', 'a.addToCart', function (e) { 
         e.preventDefault();
         // debugger;
         var url = '/store/additem';
-        var id = $(this).data('id');
+        var id = $(this).data('id'); // Learn event bubbling
         // alert(id);
         $.ajax({
             url: url,
