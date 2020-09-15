@@ -6,7 +6,7 @@ import json
 
 class AddCart(View):
     def post(self,request):
-        data =json.loads(request.body.decode('utf-8'))
+        data =json.loads(request.body.decode('utf-8')) # noneed to this if you send json from frontend . you don't have to stringify the data in frontend
         product_id = str(data.get('proid'))
         cart = request.session.get('customer')
         return_dict = {}
