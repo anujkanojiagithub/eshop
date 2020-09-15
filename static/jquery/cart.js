@@ -1,7 +1,7 @@
 $(document).ready(function(){
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    $('body').on('click','.change_value',function(){
-        var value = $(this).data('value');
+    $('body').on('click','.change_value',function(){ // use .ready() only for event registration and write the actual function outside the .ready() function. it make code more readble.
+        var value = $(this).data('value'); // Learn about event bubbling and remove usage of this operator.
         var id = $(this).data('id');
         $.ajax({
             url:"/store/cart",
@@ -10,7 +10,7 @@ $(document).ready(function(){
                 'content-Type': 'application/json',
                 'X-CSRFToken': csrftoken
             },
-            data:JSON.stringify({'id':id,"value":value}),
+            data:JSON.stringify({'id':id,"value":value}), // no need to send data in string format.
             success:function(data)
             {   
                 var cart_total = data['cart_total'];
