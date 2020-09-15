@@ -1,14 +1,18 @@
 from django.shortcuts import render, redirect
 from django.views import View
+
+# try writing imports in more readable format like from appname.models_file import ModelName
 from ..models.product import Product
 from ..models.order import Order,OrderItem
+# reorder imports python modules firsts then django built-in then your
 import json
 from django.http import JsonResponse
 
+# No Error handling 
 
 class Cart(View):
     def get(self,request):
-        user = request.session.get('customer')
+        user = request.session.get('customer') # it is better if you write the exiting condition first.
         if user :
             user_id = user['id']
             order = Order.get_order(user_id)
